@@ -3,4 +3,4 @@ module.exports = {
   use: {
     baseURL: process.env.BASE_URL || '',
   },
-};
+}

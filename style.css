@@ -69,7 +69,7 @@ h1 {
   color: #888;
 }
 
-.todo-item input[type="checkbox"] {
+.todo-item input[type='checkbox'] {
   margin-right: 0.75rem;
 }
 
