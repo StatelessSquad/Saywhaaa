@@ -1,0 +1,37 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  lint-test-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run test
+      - run: npm run build
+      - name: Start preview server
+        id: preview
+        run: |
+          npm run preview -- --port 4173 &
+          PREVIEW_PID=$!
+          echo "PREVIEW_PID=$PREVIEW_PID" >> $GITHUB_ENV
+          # wait for server to be ready
+          sleep 5
+      - name: Set BASE_URL
+        run: echo "BASE_URL=http://localhost:4173/Saywhaaa/" >> $GITHUB_ENV
+      - name: Run Playwright tests
+        env:
+          BASE_URL: ${{ env.BASE_URL }}
+        run: npm run e2e
+      - name: Stop preview server
+        if: always()
+        run: kill $PREVIEW_PID
