@@ -11,10 +11,10 @@ const localStorageMock = (() => {
     },
     clear: () => {
       store = {}
-    }
+    },
   }
 })()
 
 Object.defineProperty(window, 'localStorage', {
-  value: localStorageMock
+  value: localStorageMock,
 })
