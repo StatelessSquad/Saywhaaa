@@ -11,10 +11,9 @@ const localStorageMock = (() => {
     },
     clear: () => {
       store = {}
-    },
+    }
   }
 })()
 
-Object.defineProperty(window, 'localStorage', {
-  value: localStorageMock,
-})
+// @ts-ignore: Property 'localStorage' does not exist on type 'Global & typeof globalThis'.
+global.localStorage = localStorageMock
