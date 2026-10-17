@@ -1,20 +1,20 @@
 // Mock localStorage
 const localStorageMock = (() => {
-  let store: Record<string, string> = {};
+  let store: Record<string, string> = {}
   return {
     getItem: (key: string) => store[key] ?? null,
     setItem: (key: string, value: string) => {
-      store[key] = value.toString();
+      store[key] = value.toString()
     },
     removeItem: (key: string) => {
-      delete store[key];
+      delete store[key]
     },
     clear: () => {
-      store = {};
-    },
-  };
-})();
+      store = {}
+    }
+  }
+})()
 
 Object.defineProperty(window, 'localStorage', {
-  value: localStorageMock,
-});
+  value: localStorageMock
+})
