@@ -11,9 +11,9 @@ const localStorageMock = (() => {
     },
     clear: () => {
       store = {}
-    }
+    },
   }
 })()
 
-// @ts-ignore: Property 'localStorage' does not exist on type 'Global & typeof globalThis'.
+// @ts-expect-error: Property 'localStorage' does not exist on type 'Global & typeof globalThis'.
 global.localStorage = localStorageMock
