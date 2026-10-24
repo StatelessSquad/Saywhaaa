@@ -63,4 +63,5 @@ The app is automatically deployed to GitHub Pages on push to the `main` branch.
 
 ## License
 
-ISC
+Proprietary: © 2026 StateLess Squad, all rights reserved. See [LICENSE](LICENSE).
+
